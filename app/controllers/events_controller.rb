@@ -1,7 +1,14 @@
 class EventsController < ApplicationController
 	def index
 		if user_signed_in?
-			@events = Event.order('updated_at DESC')
+			# puts current_user.id
+			 myevents = Event.where(user_id: current_user.id)
+			 myevents.each do |e|
+			 	puts e.title
+			 	puts e.overview
+			 end
+		
+			 @events = myevents.order('updated_at DESC')
 		
 		else
 			redirect_to "/users/sign_in"
