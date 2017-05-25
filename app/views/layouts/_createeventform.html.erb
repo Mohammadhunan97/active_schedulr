@@ -1,0 +1,19 @@
+<%= form_tag("/events", method: "post") do %>
+
+<!-- Title -->
+  <%= label_tag(:title, "Event title") %>
+  <%= text_field_tag(:title, "Spot's birthday") %>
+  <br>
+<!-- Overview -->
+  <%= label_tag(:overview, "General overview of the event") %>
+  <%= text_field_tag(:overview, "Pick up Spot's birthday cake") %>
+  <br>
+
+<!-- Date -->
+  <%= label_tag(:date, "Date") %>
+  <%= text_field_tag(:date, "4:00pm Saturday") %>
+  <br>
+
+<!-- Submit -->
+  <%= submit_tag("submit") %>
+<% end %>

@@ -1,4 +1,6 @@
 # README
+ruby 2.4.0p0 
+psql (PostgreSQL) 9.6.2
 
 This README would normally document whatever steps are necessary to get the
 application up and running.

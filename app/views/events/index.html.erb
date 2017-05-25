@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Active Schedulr Home</title>
+</head>
+<body>
+
+	<h1>Your Scheduled Events</h1>
+	<button class='add-event'>Add an Event</button>
+	<span class='create-event'><%= render 'layouts/createeventform'%></span>
+
+	<% @events.each do |event| %>
+	<hr>
+	<%= event.title%>
+	<br>
+	<%= event.overview%>
+	<br>
+	<%= event.date%>
+	<br>
+	<% end %>
+
+<script> 
+$(document).ready(function(){
+	$('.create-event').hide();
+})
+$('.add-event').click(function(){
+	$(this).hide();
+	$('.create-event').show();
+})
+</script>
+
+</body>
+</html>
+
