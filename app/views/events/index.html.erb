@@ -9,27 +9,48 @@
 	<button class='add-event'>Add an Event</button>
 	<span class='create-event'><%= render 'layouts/createeventform'%></span>
 
+
+
+<br>
+<br>
+<br>
 	<% @events.each do |event| %>
 	<hr>
 	<%= event.title%>
 	<button class='update-event' data=<%=event.id%>>Update Event</button>
 	<button class='delete-event' data=<%=event.id%>>Delete Event</button>
-
-	<span class='create-event' id="<%=event.id%>">
-		<br><br>
-		<%= render 'layouts/createeventform'%>
-		<br><br>
-	</span>
 	<br>
 	<%= event.overview%>
 	<br>
 	<%= event.date%>
 	<br>
+
+	<span class='update-event-form' id=<%=event.id%>>
+	<%= form_tag("/events/#{event.id}", method: "put") do %>
+	<!-- Title -->
+	  <%= label_tag(:title, "Event title") %>
+	  <%= text_field_tag(:title, "#{event.title}") %>
+	  <br>
+	<!-- Overview -->
+	  <%= label_tag(:overview, "General overview of the event") %>
+	  <%= text_field_tag(:overview, "#{event.overview}") %>
+	  <br>
+	<!-- Date -->
+	  <%= label_tag(:date, "Date") %>
+	  <%= text_field_tag(:date, "#{event.date}") %>
+	  <br>
+	<!-- Submit -->
+	  <%= submit_tag("submit") %>
 	<% end %>
+	</span>
+
+
+<% end %>
 
 <script> 
 $(document).ready(function(){
 	$('.create-event').hide();
+	$('.update-event-form').hide();
 })
 $('.add-event').click(function(){
 	$(this).hide();
